@@ -19,7 +19,6 @@
                     // Return 'Scissors'
         function getComputerChoice() {
             let randomNumber = Math.floor((Math.random() * 3) + 1);
-            console.log(randomNumber);
             if (randomNumber === 1) {
                 return 'Rock'
             } else if (randomNumber === 2) {
@@ -28,6 +27,27 @@
                 return 'Scissors'
             };
         }
+
+        // Write a function that plays a single round of Rock Paper Scissors
+        // The function should take two parameters: playerSelection and computerSelection
+        // and then return a string that declares the winner of the round like so: 'You lose! Paper beats rock'
+        // Make your function's playerSelection parameter case-incensitive (so users can input rock, ROCK, RocK or any other variation)
+        // Account for ties by replaying the round
+        function playRound(playerSelection,computerSelection) {
+            computerSelection = getComputerChoice();
+            
+            playerSelection = playerSelection.toLowerCase();
+            let playerSelectionFirstChar = playerSelection.slice(0,1);
+            playerSelectionFirstChar = playerSelectionFirstChar.toUpperCase();
+            let playerSelectionRest = playerSelection.slice(1,);
+            playerSelection = playerSelectionFirstChar.concat(playerSelectionRest);
+
+            console.log("playerSelection: " + (playerSelection));
+            console.log("computerSelection: " + (computerSelection));
+                        
+        }
+
+
     </script>
 </body>
 </html>
