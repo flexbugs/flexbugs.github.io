@@ -36,11 +36,14 @@
         function playRound(playerSelection,computerSelection) {
             computerSelection = getComputerChoice();
             
+            // playerSelection = playerSelection.toLowerCase();
+            // let playerSelectionFirstChar = playerSelection.slice(0,1);
+            // playerSelectionFirstChar = playerSelectionFirstChar.toUpperCase();
+            // let playerSelectionRest = playerSelection.slice(1,);
+            // playerSelection = playerSelectionFirstChar.concat(playerSelectionRest);
+
             playerSelection = playerSelection.toLowerCase();
-            let playerSelectionFirstChar = playerSelection.slice(0,1);
-            playerSelectionFirstChar = playerSelectionFirstChar.toUpperCase();
-            let playerSelectionRest = playerSelection.slice(1,);
-            playerSelection = playerSelectionFirstChar.concat(playerSelectionRest);
+            playerSelection = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1);
 
             console.log("playerSelection: " + (playerSelection));
             console.log("computerSelection: " + (computerSelection));
