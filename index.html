@@ -9,14 +9,6 @@
     <script>
         // The goal: User can play Rock Paper Scissors against the computer through the console. 
 
-        // Write a function that will randomly return either 'Rock', 'Paper' or 'Scissors'. 
-            // DETERMINE a random number of 1, 2 or 3
-                // IF number === 1
-                    // Return 'Rock'
-                // ELSE IF number === 2
-                    // Return 'Paper'
-                // ELSE IF number === 3
-                    // Return 'Scissors'
         function getComputerChoice() {
             let randomNumber = Math.floor((Math.random() * 3) + 1);
             if (randomNumber === 1) {
@@ -28,20 +20,17 @@
             };
         }
 
-        // Write a function that plays a single round of Rock Paper Scissors
-        // The function should take two parameters: playerSelection and computerSelection
         function playRound(playerSelection,computerSelection) {
             computerSelection = getComputerChoice();
         
-            // Make your function's playerSelection parameter case-incensitive (so users can input rock, ROCK, RocK or any other variation)
+            // Make playerSelection case insensitive
             playerSelection = playerSelection.toLowerCase();
             playerSelection = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1);
 
             console.log('playerSelection: ' + (playerSelection));
             console.log('computerSelection: ' + (computerSelection));
         
-            // and then return a string that declares the winner of the round like so: 'You lose! Paper beats rock'    
-
+            // Announce result of round
             if (playerSelection === computerSelection) {
                 return `Tie! Both chose ${playerSelection}`
             
