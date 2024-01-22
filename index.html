@@ -41,30 +41,23 @@
             console.log('computerSelection: ' + (computerSelection));
         
             // and then return a string that declares the winner of the round like so: 'You lose! Paper beats rock'    
-            // IF computerSelection === playerSelection THEN
-                // 'Tie! Both selected pS'
-            // ELSE IF computerSelection beats playerSelection
-                // 'You lose! cS beats pS'
-            // ELSE IF playerSelection beats computerSeletion
-                // 'You win! pS beats cS'
-            // ENDIF
+
             if (playerSelection === computerSelection) {
-                return "Tie! Both chose " + playerSelection + "!"
+                return `Tie! Both chose ${playerSelection}`
             
             } else if 
                 ((playerSelection === 'Rock' && computerSelection === 'Paper') || 
                 (playerSelection === 'Paper' && computerSelection === 'Scissors') || 
                 (playerSelection === 'Scissors' && computerSelection === 'Rock')) {
             
-                    return "You lose! Computer's " + computerSelection + " beats your " + playerSelection + "!"
+                    return `You lose! Computer's ${computerSelection} beats your ${playerSelection}!`
 
             } else if 
                 ((computerSelection === 'Rock' && playerSelection === 'Paper') || 
                 (computerSelection === 'Paper' && playerSelection === 'Scissors') || 
                 (computerSelection === 'Scissors' && playerSelection === 'Rock')) {
                
-                    return "You win! Your " + playerSelection + " beats computer's " + computerSelection + "!"
-
+                    return `You win! Your ${playerSelection} beats computer's ${computerSelection}!`
             };
             // Account for ties by replaying the round
         }
