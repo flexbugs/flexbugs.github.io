@@ -30,18 +30,43 @@
 
         // Write a function that plays a single round of Rock Paper Scissors
         // The function should take two parameters: playerSelection and computerSelection
-        // and then return a string that declares the winner of the round like so: 'You lose! Paper beats rock'
-        // Make your function's playerSelection parameter case-incensitive (so users can input rock, ROCK, RocK or any other variation)
-        // Account for ties by replaying the round
         function playRound(playerSelection,computerSelection) {
             computerSelection = getComputerChoice();
-            
+        
+            // Make your function's playerSelection parameter case-incensitive (so users can input rock, ROCK, RocK or any other variation)
             playerSelection = playerSelection.toLowerCase();
             playerSelection = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1);
 
-            console.log("playerSelection: " + (playerSelection));
-            console.log("computerSelection: " + (computerSelection));
-                        
+            console.log('playerSelection: ' + (playerSelection));
+            console.log('computerSelection: ' + (computerSelection));
+        
+            // and then return a string that declares the winner of the round like so: 'You lose! Paper beats rock'    
+            // IF computerSelection === playerSelection THEN
+                // 'Tie! Both selected pS'
+            // ELSE IF computerSelection beats playerSelection
+                // 'You lose! cS beats pS'
+            // ELSE IF playerSelection beats computerSeletion
+                // 'You win! pS beats cS'
+            // ENDIF
+            if (playerSelection === computerSelection) {
+                return "Tie! Both chose " + playerSelection + "!"
+            
+            } else if 
+                ((playerSelection === 'Rock' && computerSelection === 'Paper') || 
+                (playerSelection === 'Paper' && computerSelection === 'Scissors') || 
+                (playerSelection === 'Scissors' && computerSelection === 'Rock')) {
+            
+                    return "You lose! Computer's " + computerSelection + " beats your " + playerSelection + "!"
+
+            } else if 
+                ((computerSelection === 'Rock' && playerSelection === 'Paper') || 
+                (computerSelection === 'Paper' && playerSelection === 'Scissors') || 
+                (computerSelection === 'Scissors' && playerSelection === 'Rock')) {
+               
+                    return "You win! Your " + playerSelection + " beats computer's " + computerSelection + "!"
+
+            };
+            // Account for ties by replaying the round
         }
 
 
