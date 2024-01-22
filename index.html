@@ -7,7 +7,27 @@
 </head>
 <body>
     <script>
-        
+        // The goal: User can play Rock Paper Scissors against the computer through the console. 
+
+        // Write a function that will randomly return either 'Rock', 'Paper' or 'Scissors'. 
+            // DETERMINE a random number of 1, 2 or 3
+                // IF number === 1
+                    // Return 'Rock'
+                // ELSE IF number === 2
+                    // Return 'Paper'
+                // ELSE IF number === 3
+                    // Return 'Scissors'
+        function getComputerchoice() {
+            let randomNumber = Math.floor((Math.random() * 3) + 1);
+            console.log(randomNumber);
+            if (randomNumber === 1) {
+                return 'Rock'
+            } else if (randomNumber === 2) {
+                return 'Paper'
+            } else if (randomNumber === 3) {
+                return 'Scissors'
+            };
+        }
     </script>
 </body>
 </html>
