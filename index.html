@@ -20,14 +20,25 @@
             };
         }
 
-        // Provide playerSelection when calling, like so: playRound('Rock')
+        function getPlayerChoice() {
+            let playerChoice = prompt('Type "Rock", "Paper" or "Scissors"');
+            
+            // Make playerChoice case insensitive
+            playerChoice = playerChoice.toLowerCase();
+            playerChoice = playerChoice.charAt(0).toUpperCase() + playerChoice.slice(1);
+
+            if (playerChoice !== 'Rock' && playerChoice !== 'Paper' && playerChoice !== 'Scissors') {
+                alert('Something else was typed! Please try again.');
+                getPlayerChoice();
+            }
+
+            return playerChoice;
+        }
+
         function playRound(playerSelection,computerSelection) {
+            playerSelection = getPlayerChoice();
             computerSelection = getComputerChoice();
         
-            // Make playerSelection case insensitive
-            playerSelection = playerSelection.toLowerCase();
-            playerSelection = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1);
-
             // Announce result of round
             if (playerSelection === computerSelection) {
                 
@@ -50,6 +61,14 @@
                     console.log(`You win! Your ${playerSelection} beats computer's ${computerSelection}!`)
                     return 'win';
             };
+        }
+
+        function game() {
+            playRound();
+            playRound();
+            playRound();
+            playRound();
+            playRound();
         }
 
     </script>
