@@ -33,6 +33,7 @@
         
             // Announce result of round
             if (playerSelection === computerSelection) {
+                
                 console.log(`Tie! Both chose ${playerSelection}. Re-playing round!`)
                 return playRound(playerSelection,computerSelection);
             
@@ -40,19 +41,20 @@
                 ((playerSelection === 'Rock' && computerSelection === 'Paper') || 
                 (playerSelection === 'Paper' && computerSelection === 'Scissors') || 
                 (playerSelection === 'Scissors' && computerSelection === 'Rock')) {
-            
-                    return `You lose! Computer's ${computerSelection} beats your ${playerSelection}!`
+                    
+                    console.log(`You lose! Computer's ${computerSelection} beats your ${playerSelection}!`)
+                    return 'loss';
 
             } else if 
                 ((computerSelection === 'Rock' && playerSelection === 'Paper') || 
                 (computerSelection === 'Paper' && playerSelection === 'Scissors') || 
                 (computerSelection === 'Scissors' && playerSelection === 'Rock')) {
-               
-                    return `You win! Your ${playerSelection} beats computer's ${computerSelection}!`
+                    
+                    console.log(`You win! Your ${playerSelection} beats computer's ${computerSelection}!`)
+                    return 'win';
             };
             // Account for ties by replaying the round
         }
-
 
     </script>
 </body>
