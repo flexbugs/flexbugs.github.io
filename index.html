@@ -35,6 +35,32 @@
             return playerChoice;
         }
 
+        let playerWins = 0
+        let computerWins = 0
+
+        function resetScore() {
+            playerWins = 0
+            computerWins = 0
+        }
+        
+        function addplayerWin() {
+            playerWins ++
+            console.log(`player wins: ${playerWins}`)
+        }
+
+        function addcomputerWin() {
+            computerWins ++
+            console.log(`computer wins: ${computerWins}`)
+        }
+
+        function announceGameResult() {
+            if (playerWins > computerWins) {
+                console.log(`Game result: Player wins ${playerWins}\-${computerWins}!`)
+            } else if (computerWins > playerWins) {
+                console.log(`Game result: Computer wins ${computerWins}\-${playerWins}!`)
+            }
+        }
+
         function playRound(playerSelection,computerSelection) {
             playerSelection = getPlayerChoice();
             computerSelection = getComputerChoice();
@@ -51,7 +77,7 @@
                 (playerSelection === 'Scissors' && computerSelection === 'Rock')) {
                     
                     console.log(`You lose! Computer's ${computerSelection} beats your ${playerSelection}!`)
-                    return 'loss';
+                    return addcomputerWin();
 
             } else if 
                 ((computerSelection === 'Rock' && playerSelection === 'Paper') || 
@@ -59,16 +85,18 @@
                 (computerSelection === 'Scissors' && playerSelection === 'Rock')) {
                     
                     console.log(`You win! Your ${playerSelection} beats computer's ${computerSelection}!`)
-                    return 'win';
+                    return addplayerWin();
             };
         }
 
         function game() {
+            resetScore();
             playRound();
             playRound();
             playRound();
             playRound();
             playRound();
+            announceGameResult();
         }
 
     </script>
