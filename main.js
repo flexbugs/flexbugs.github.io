@@ -9,20 +9,32 @@ function getComputerChoice() {
     };
 }
 
-function getPlayerChoice() {
-    let playerChoice = prompt('Type "Rock", "Paper" or "Scissors"');
-    
-    // Make playerChoice case insensitive
-    playerChoice = playerChoice.toLowerCase();
-    playerChoice = playerChoice.charAt(0).toUpperCase() + playerChoice.slice(1);
 
-    if (playerChoice !== 'Rock' && playerChoice !== 'Paper' && playerChoice !== 'Scissors') {
-        alert('Something else was typed! Please try again.');
-        getPlayerChoice();
+// eventlistener on div for click event
+let buttons = document.querySelector('#buttons');
+
+// find out which button was clicked
+// make the playerselection based on button
+buttons.addEventListener('click', (e) => {
+    let target = e.target;
+
+    switch(target.id) {
+        case 'rock':
+            playRound('Rock');
+            break;
+        case 'paper':
+            playRound('Paper');
+            break;
+        case 'scissors':
+            playRound('Scissors');
+            break;
     }
+});
 
-    return playerChoice;
-}
+
+
+
+
 
 let playerWins = 0
 let computerWins = 0
@@ -51,9 +63,8 @@ function announceGameResult() {
 }
 
 function playRound(playerSelection,computerSelection) {
-    playerSelection = getPlayerChoice();
     computerSelection = getComputerChoice();
-
+    
     // Announce result of round
     if (playerSelection === computerSelection) {
         
