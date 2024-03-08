@@ -1,3 +1,40 @@
+let playerWins = 0;
+let computerWins = 0;
+let buttons = document.querySelector('#buttons');
+let results = document.querySelector('#results');
+
+buttons.addEventListener('click', (e) => {
+    let target = e.target;
+    playRound(`${target.id}`)
+});
+
+function resetScore() {
+    playerWins = 0;
+    computerWins = 0;
+}
+
+function addplayerWin() {
+    playerWins ++;
+    const para = document.createElement("p");
+    para.textContent = `player wins: ${playerWins}`;
+    results.appendChild(para);
+}
+
+function addcomputerWin() {
+    computerWins ++;
+    const para = document.createElement("p");
+    para.textContent = `computer wins: ${computerWins}`;
+    results.appendChild(para);
+}
+
+function announceGameResult() {
+    if (playerWins > computerWins) {
+        console.log(`Game result: Player wins ${playerWins}\-${computerWins}!`)
+    } else if (computerWins > playerWins) {
+        console.log(`Game result: Computer wins ${computerWins}\-${playerWins}!`)
+    }
+}
+
 function getComputerChoice() {
     let randomNumber = Math.floor((Math.random() * 3) + 1);
     if (randomNumber === 1) {
@@ -9,62 +46,35 @@ function getComputerChoice() {
     };
 }
 
-let buttons = document.querySelector('#buttons');
-
-buttons.addEventListener('click', (e) => {
-    let target = e.target;
-    playRound(`${target.id}`)
-});
-
-let playerWins = 0
-let computerWins = 0
-
-function resetScore() {
-    playerWins = 0
-    computerWins = 0
-}
-
-function addplayerWin() {
-    playerWins ++
-    console.log(`player wins: ${playerWins}`)
-}
-
-function addcomputerWin() {
-    computerWins ++
-    console.log(`computer wins: ${computerWins}`)
-}
-
-function announceGameResult() {
-    if (playerWins > computerWins) {
-        console.log(`Game result: Player wins ${playerWins}\-${computerWins}!`)
-    } else if (computerWins > playerWins) {
-        console.log(`Game result: Computer wins ${computerWins}\-${playerWins}!`)
-    }
-}
-
 function playRound(playerSelection,computerSelection) {
     computerSelection = getComputerChoice();
     
-    // Announce result of round
     if (playerSelection === computerSelection) {
         
-        console.log(`Tie! Both chose ${playerSelection}. Re-playing round!`)
-        return playRound(playerSelection,computerSelection);
+        const para = document.createElement("p");
+        para.textContent = `Tie! Both chose ${playerSelection}. Nobody wins!`;
+        results.appendChild(para);
     
     } else if 
         ((playerSelection === 'rock' && computerSelection === 'paper') || 
         (playerSelection === 'paper' && computerSelection === 'scissors') || 
         (playerSelection === 'scissors' && computerSelection === 'rock')) {
             
-            console.log(`You lose! Computer's ${computerSelection} beats your ${playerSelection}!`)
-            return addcomputerWin();
+            const para = document.createElement("p");
+            para.textContent = `You lose! Computer's ${computerSelection} 
+                                beats your ${playerSelection}!`;
+            results.appendChild(para);
+            addcomputerWin();
 
     } else if 
         ((computerSelection === 'rock' && playerSelection === 'paper') || 
         (computerSelection === 'paper' && playerSelection === 'scissors') || 
         (computerSelection === 'scissors' && playerSelection === 'rock')) {
             
-            console.log(`You win! Your ${playerSelection} beats computer's ${computerSelection}!`)
-            return addplayerWin();
+            const para = document.createElement("p");
+            para.textContent = `You win! Your ${playerSelection} 
+                                beats computer's ${computerSelection}!`
+            results.appendChild(para);
+            addplayerWin();
     };
 }
