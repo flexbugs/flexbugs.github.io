@@ -1,40 +1,20 @@
 function getComputerChoice() {
     let randomNumber = Math.floor((Math.random() * 3) + 1);
     if (randomNumber === 1) {
-        return 'Rock'
+        return 'rock'
     } else if (randomNumber === 2) {
-        return 'Paper'
+        return 'paper'
     } else if (randomNumber === 3) {
-        return 'Scissors'
+        return 'scissors'
     };
 }
 
-
-// eventlistener on div for click event
 let buttons = document.querySelector('#buttons');
 
-// find out which button was clicked
-// make the playerselection based on button
 buttons.addEventListener('click', (e) => {
     let target = e.target;
-
-    switch(target.id) {
-        case 'rock':
-            playRound('Rock');
-            break;
-        case 'paper':
-            playRound('Paper');
-            break;
-        case 'scissors':
-            playRound('Scissors');
-            break;
-    }
+    playRound(`${target.id}`)
 });
-
-
-
-
-
 
 let playerWins = 0
 let computerWins = 0
@@ -72,17 +52,17 @@ function playRound(playerSelection,computerSelection) {
         return playRound(playerSelection,computerSelection);
     
     } else if 
-        ((playerSelection === 'Rock' && computerSelection === 'Paper') || 
-        (playerSelection === 'Paper' && computerSelection === 'Scissors') || 
-        (playerSelection === 'Scissors' && computerSelection === 'Rock')) {
+        ((playerSelection === 'rock' && computerSelection === 'paper') || 
+        (playerSelection === 'paper' && computerSelection === 'scissors') || 
+        (playerSelection === 'scissors' && computerSelection === 'rock')) {
             
             console.log(`You lose! Computer's ${computerSelection} beats your ${playerSelection}!`)
             return addcomputerWin();
 
     } else if 
-        ((computerSelection === 'Rock' && playerSelection === 'Paper') || 
-        (computerSelection === 'Paper' && playerSelection === 'Scissors') || 
-        (computerSelection === 'Scissors' && playerSelection === 'Rock')) {
+        ((computerSelection === 'rock' && playerSelection === 'paper') || 
+        (computerSelection === 'paper' && playerSelection === 'scissors') || 
+        (computerSelection === 'scissors' && playerSelection === 'rock')) {
             
             console.log(`You win! Your ${playerSelection} beats computer's ${computerSelection}!`)
             return addplayerWin();
