@@ -1,12 +1,12 @@
 let playerScore = 0;
 let computerScore = 0;
 let winner = '';
-let buttons = document.querySelector('#buttons');
+let playButtons = document.querySelector('#play-buttons');
 let results = document.querySelector('#results');
 
-buttons.addEventListener('click', (e) => {
+playButtons.addEventListener('click', (e) => {
     let target = e.target;
-    playRound(`${target.id}`)
+    playRound(`${target.id}`);
 });
 
 function playRound(playerSelection,computerSelection) {
@@ -15,7 +15,8 @@ function playRound(playerSelection,computerSelection) {
     if (playerSelection === computerSelection) {
         
         const roundResult = document.createElement("p");
-        roundResult.textContent = `Tie! Both chose ${playerSelection}. Nobody wins!`;
+        roundResult.textContent = `Tie! Both chose ${playerSelection}. 
+                                    Nobody wins!`;
         results.appendChild(roundResult);
     
     } else if 
@@ -25,7 +26,7 @@ function playRound(playerSelection,computerSelection) {
             
             const roundResult = document.createElement("p");
             roundResult.textContent = `You lose! Computer's ${computerSelection} 
-                                beats your ${playerSelection}!`;
+                                        beats your ${playerSelection}!`;
             results.appendChild(roundResult);
             updateScore('computerWin');
 
@@ -36,7 +37,7 @@ function playRound(playerSelection,computerSelection) {
             
             const roundResult = document.createElement("p");
             roundResult.textContent = `You win! Your ${playerSelection} 
-                                beats computer's ${computerSelection}!`
+                                        beats computer's ${computerSelection}!`
             results.appendChild(roundResult);
             updateScore('playerWin');
     };
@@ -71,16 +72,17 @@ function updateScore(latestResult) {
         winnerAnnouncement.id = 'announcement'
         winnerAnnouncement.textContent = `${winner} has won 5 rounds and 
                                         wins the game!`;
-        winnerAnnouncement.style.cssText = 'font-weight: bold';
         results.appendChild(winnerAnnouncement);
 
-        while (buttons.firstChild) {
-            buttons.removeChild(buttons.firstChild);
-        };
+        playButtons.setAttribute('style', 'display: none');
 
         let resetButton = document.createElement('button')
         resetButton.textContent = 'Play again';
         results.appendChild(resetButton);
+
+        resetButton.addEventListener('click', (e) => {
+            resetGame();
+        })
     }
 }
 
@@ -90,4 +92,5 @@ function resetGame() {
     while (results.firstChild) {
         results.removeChild(results.firstChild);
     }
+    playButtons.setAttribute('style', 'display: null');
 }
