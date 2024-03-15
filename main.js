@@ -3,6 +3,7 @@ let computerScore = 0;
 let winner = '';
 let playButtons = document.querySelector('#play-buttons');
 let results = document.querySelector('#results');
+results.setAttribute('style', 'display: none');
 
 playButtons.addEventListener('click', (e) => {
     let target = e.target;
@@ -11,6 +12,8 @@ playButtons.addEventListener('click', (e) => {
 
 function playRound(playerSelection,computerSelection) {
     computerSelection = getComputerChoice();
+
+    results.setAttribute('style', 'display: null');
     
     if (playerSelection === computerSelection) {
         
