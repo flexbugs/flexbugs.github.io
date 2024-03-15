@@ -1,99 +1,72 @@
-let playerScore = 0;
-let computerScore = 0;
-let winner = '';
+let roundsPlayed = 0;
+let wins = 0;
+let losses = 0;
+let roundResults = [];
 let playButtons = document.querySelector('#play-buttons');
-let results = document.querySelector('#results');
-results.setAttribute('style', 'display: none');
 
 playButtons.addEventListener('click', (e) => {
-    let target = e.target;
-    playRound(`${target.id}`);
+    let target = e.target.id;
+
+    // Target validation to avoid playing round if user clicks between buttons
+    if (target === 'rock' || target === 'paper' || target === 'scissors') {
+        playRound(`${target}`);
+        console.log(winnerCheck(), roundResults);
+    }
 });
 
-function playRound(playerSelection,computerSelection) {
+function playRound(playerSelection) {
     computerSelection = getComputerChoice();
-
-    results.setAttribute('style', 'display: null');
     
+    let roundData = {};
+    roundData.roundNumber = roundsPlayed + 1;
+    roundData.playerSelection = playerSelection;
+    roundData.computerSelection = computerSelection;
+
     if (playerSelection === computerSelection) {
         
-        const roundResult = document.createElement("p");
-        roundResult.textContent = `Tie! Both chose ${playerSelection}. 
-                                    Nobody wins!`;
-        results.appendChild(roundResult);
+        roundData.result = 'tie';
     
     } else if 
         ((playerSelection === 'rock' && computerSelection === 'paper') || 
         (playerSelection === 'paper' && computerSelection === 'scissors') || 
         (playerSelection === 'scissors' && computerSelection === 'rock')) {
             
-            const roundResult = document.createElement("p");
-            roundResult.textContent = `You lose! Computer's ${computerSelection} 
-                                        beats your ${playerSelection}!`;
-            results.appendChild(roundResult);
-            updateScore('computerWin');
+            roundData.result = 'loss';
+            losses ++;
 
-    } else if 
+        } else if 
         ((computerSelection === 'rock' && playerSelection === 'paper') || 
         (computerSelection === 'paper' && playerSelection === 'scissors') || 
         (computerSelection === 'scissors' && playerSelection === 'rock')) {
             
-            const roundResult = document.createElement("p");
-            roundResult.textContent = `You win! Your ${playerSelection} 
-                                        beats computer's ${computerSelection}!`
-            results.appendChild(roundResult);
-            updateScore('playerWin');
-    };
+            roundData.result = 'win';
+            wins ++;
+        }
+
+    roundResults.push(roundData);
+    roundsPlayed++;
 }
 
 function getComputerChoice() {
     let randomNumber = Math.floor((Math.random() * 3) + 1);
+
     if (randomNumber === 1) {
         return 'rock';
+
     } else if (randomNumber === 2) {
-        return 'paper';
+        return 'paper'; 
+
     } else if (randomNumber === 3) {
         return 'scissors';
-    };
-}
-
-function updateScore(latestResult) {
-    if (latestResult == 'playerWin') {
-        playerScore++;
-    } else if (latestResult == 'computerWin') {
-        computerScore++;
-    };
-
-    if (playerScore == 5 || computerScore == 5) {
-        if (playerScore == 5) {
-            winner = 'Player';
-        } else if (computerScore == 5) {
-            winner = 'Computer';
-        }
-
-        const winnerAnnouncement = document.createElement('div');
-        winnerAnnouncement.id = 'announcement'
-        winnerAnnouncement.textContent = `${winner} has won 5 rounds and 
-                                        wins the game!`;
-        results.appendChild(winnerAnnouncement);
-
-        playButtons.setAttribute('style', 'display: none');
-
-        let resetButton = document.createElement('button')
-        resetButton.textContent = 'Play again';
-        results.appendChild(resetButton);
-
-        resetButton.addEventListener('click', (e) => {
-            resetGame();
-        })
     }
 }
 
-function resetGame() {
-    playerScore = 0;
-    computerScore = 0;
-    while (results.firstChild) {
-        results.removeChild(results.firstChild);
+function winnerCheck() {
+    if (wins >= 5) {
+        return 'player wins the game';
+    } else if (losses >= 5) {
+        return 'computer wins the game';
+    } else {
+        return 'no winner yet';
     }
-    playButtons.setAttribute('style', 'display: null');
-}
+} 
