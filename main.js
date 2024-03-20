@@ -2,7 +2,13 @@ let roundsPlayed = 0;
 let wins = 0;
 let losses = 0;
 let roundResults = [];
-let playButtons = document.querySelector('#play-buttons');
+let roundArea = document.querySelector('#round-area');
+let roundNumber = document.querySelector('#round-number');
+let makeChoice = document.querySelector('#make-choice');
+let playButtons = document.querySelector('#make-choice');
+
+let roundRecap = document.querySelector('#round-recap');
+
 
 playButtons.addEventListener('click', (e) => {
     let target = e.target.id;
@@ -13,6 +19,56 @@ playButtons.addEventListener('click', (e) => {
         console.log(winnerCheck(), roundResults);
     }
 });
+
+/* 
+
+User presses hand button:
+
+    Round area:
+    - Change to Results state
+        - Hide hand buttons
+        - call playRound()
+        - Show choices, round result, updated score and Next round button
+
+    Log area:
+    - If this was first round: hide empty state and show log columns
+    - Add round to log
+
+
+User presses Next round: 
+    
+    Round area:
+    - Increment round number
+    - Change to Choice state
+        - Hide choices, round result, score and Next round button
+
+
+User presses Play again:
+
+    - Reset everything
+
+All states:
+    - roundNumber
+
+Choice state:
+    - div: playButtons
+        - p: Make your choice 
+        - div: buttons
+    - p: currentScore
+
+Result state:
+    - div: roundChoices
+    - p: roundResult
+    - p: currentScore
+    - button: nextRound
+
+Game over state:
+    - div: roundChoices
+    - p: gameResult
+    - button: playAgain
+*/    
+
+
 
 function playRound(playerSelection) {
     computerSelection = getComputerChoice();
@@ -64,8 +120,10 @@ function getComputerChoice() {
 function winnerCheck() {
     if (wins >= 5) {
         return 'player wins the game';
+
     } else if (losses >= 5) {
         return 'computer wins the game';
+
     } else {
         return 'no winner yet';
     }

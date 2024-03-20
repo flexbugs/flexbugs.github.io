@@ -13,16 +13,34 @@
         "Rock, Paper, Scissors icon" height="40px" width="40px">
         Rock, Paper, Scissors
     </div>
+
     <div id=content class="container">
+
         <div id="round-area" class="container">
-            <div id=round-num>Round 1</div>
-            <div id="play-buttons">
-                <button id="rock">Rock</button>
-                <button id="paper">Paper</button>
-                <button id="scissors">Scissors</button>
+            
+            <p id="round-number">Round 1</p>
+            
+            <div id="make-choice">
+                <p class="text-small">Make your choice!</p>
+                <div id="play-buttons">
+                    <button id="rock">Rock</button>
+                    <button id="paper">Paper</button>
+                    <button id="scissors">Scissors</button>
+                </div>
+            </div>
+            
+            <div id="round-recap">
+                <div id="round-choices"></div>
+                <div id="round-result"></div>
+                <p id="current-score">Score is 0-0</p>
+                <div id="continue-buttons">
+                    <button id="next-round">Next Round</button>
+                    <button id="next-round">Play again</button>
+                </div>
             </div>
         </div>
     </div>
+
     <div id="footer" class="container">
         <a href=
         "https://www.flaticon.com/free-icons/rock-paper-scissors" 
