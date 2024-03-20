@@ -12,7 +12,7 @@ let roundRecap = document.querySelector('#round-recap');
 let continueButtons = document.querySelector('#continue-buttons');
 let playAgain = document.querySelector('#play-again');
 
-let currentScore = document.querySelector('.current-score');
+let currentScore = document.querySelectorAll('.current-score');
 let recapSelections = document.querySelector('.recap-selections');
 
 // Hide roundRecap until user plays first round
@@ -104,6 +104,12 @@ function updateRoundNumber() {
     roundNumber.textContent = `Round ${roundsPlayed + 1}`;
 }
 
+function updateScore() {
+    currentScore.forEach(element => {
+        element.textContent = `Score is ${wins}-${losses}`;
+});
+}
+
 function playRound(playerSelection) {
     computerSelection = getComputerChoice();
     
@@ -133,6 +139,7 @@ function playRound(playerSelection) {
             wins ++;
         }
 
+    updateScore();
     roundResults.push(roundData);
     roundsPlayed++;
 }
