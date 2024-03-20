@@ -2,12 +2,22 @@ let roundsPlayed = 0;
 let wins = 0;
 let losses = 0;
 let roundResults = [];
+
 let roundArea = document.querySelector('#round-area');
 let roundNumber = document.querySelector('#round-number');
 let makeChoice = document.querySelector('#make-choice');
-let playButtons = document.querySelector('#make-choice');
+let playButtons = document.querySelector('#play-buttons');
+
+let currentScore = document.querySelector('.current-score');
 
 let roundRecap = document.querySelector('#round-recap');
+let recapSelections = document.querySelector('.recap-selections');
+
+// Hide roundRecap until user plays first round
+roundRecap.style.display = 'none';
+/* to show again:
+roundRecap.style.display = ''; */
+
 
 
 playButtons.addEventListener('click', (e) => {
@@ -17,6 +27,8 @@ playButtons.addEventListener('click', (e) => {
     if (target === 'rock' || target === 'paper' || target === 'scissors') {
         playRound(`${target}`);
         console.log(winnerCheck(), roundResults);
+        makeChoice.style.display = 'none';
+        roundRecap.style.display = '';
     }
 });
 
