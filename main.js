@@ -12,13 +12,30 @@ let currentScore = document.querySelector('.current-score');
 
 let roundRecap = document.querySelector('#round-recap');
 let recapSelections = document.querySelector('.recap-selections');
+let continueButtons = document.querySelector('#continue-buttons');
+let playAgain = document.querySelector('#play-again');
 
 // Hide roundRecap until user plays first round
 roundRecap.style.display = 'none';
-/* to show again:
-roundRecap.style.display = ''; */
+playAgain.style.display = 'none';
 
+function switchTo(view) {
+    // toggles roundArea between showing makeChoice or roundRecap view
+    if (view === 'roundRecap') {
+        makeChoice.style.display = 'none';
+        roundRecap.style.display = '';
+    } else if (view === 'makeChoice') {
+        roundRecap.style.display = 'none';
+        makeChoice.style.display = '';
+    } else if (view === 'gameOver') {
+        /* 
+        - update roundResult to show game score instead of round result 
+        ('you win 5-3!' / 'you lose 3-5!') 
+        - show Play again button
+        */
 
+    }
+}
 
 playButtons.addEventListener('click', (e) => {
     let target = e.target.id;
@@ -27,10 +44,20 @@ playButtons.addEventListener('click', (e) => {
     if (target === 'rock' || target === 'paper' || target === 'scissors') {
         playRound(`${target}`);
         console.log(winnerCheck(), roundResults);
-        makeChoice.style.display = 'none';
-        roundRecap.style.display = '';
+        switchTo('roundRecap');
     }
 });
+
+continueButtons.addEventListener('click', (e) => {
+    let target = e.target.id;
+    
+    if (target === 'next-round') {
+        switchTo('makeChoice');
+    } 
+    // else if (target = play-again) {
+        
+    // }
+})
 
 /* 
 
