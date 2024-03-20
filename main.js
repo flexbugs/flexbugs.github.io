@@ -15,8 +15,6 @@ let playAgain = document.querySelector('#play-again');
 let currentScore = document.querySelector('.current-score');
 let recapSelections = document.querySelector('.recap-selections');
 
-
-
 // Hide roundRecap until user plays first round
 roundRecap.style.display = 'none';
 playAgain.style.display = 'none';
@@ -46,6 +44,7 @@ playButtons.addEventListener('click', (e) => {
     if (target === 'rock' || target === 'paper' || target === 'scissors') {
         playRound(`${target}`);
         console.log(winnerCheck(), roundResults);
+        
         switchTo('roundRecap');
     }
 });
@@ -54,6 +53,7 @@ continueButtons.addEventListener('click', (e) => {
     let target = e.target.id;
     
     if (target === 'next-round') {
+        updateRoundNumber();
         switchTo('makeChoice');
     } 
     // else if (target = play-again) {
@@ -74,15 +74,6 @@ User presses hand button:
     Log area:
     - If this was first round: hide empty state and show log columns
     - Add round to log
-
-
-User presses Next round: 
-    
-    Round area:
-    - Increment round number
-    - Change to Choice state
-        - Hide choices, round result, score and Next round button
-
 
 User presses Play again:
 
@@ -109,7 +100,9 @@ Game over state:
     - button: playAgain
 */    
 
-
+function updateRoundNumber() {
+    roundNumber.textContent = `Round ${roundsPlayed + 1}`;
+}
 
 function playRound(playerSelection) {
     computerSelection = getComputerChoice();
