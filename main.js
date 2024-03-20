@@ -8,12 +8,14 @@ let roundNumber = document.querySelector('#round-number');
 let makeChoice = document.querySelector('#make-choice');
 let playButtons = document.querySelector('#play-buttons');
 
-let currentScore = document.querySelector('.current-score');
-
 let roundRecap = document.querySelector('#round-recap');
-let recapSelections = document.querySelector('.recap-selections');
 let continueButtons = document.querySelector('#continue-buttons');
 let playAgain = document.querySelector('#play-again');
+
+let currentScore = document.querySelector('.current-score');
+let recapSelections = document.querySelector('.recap-selections');
+
+
 
 // Hide roundRecap until user plays first round
 roundRecap.style.display = 'none';
