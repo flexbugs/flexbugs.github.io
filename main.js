@@ -1,7 +1,7 @@
 let roundsPlayed = 0;
 let wins = 0;
 let losses = 0;
-let roundResults = [];
+let roundData = {};
 
 let roundArea = document.querySelector('#round-area');
 let roundNumber = document.querySelector('#round-number');
@@ -9,18 +9,21 @@ let makeChoice = document.querySelector('#make-choice');
 let playButtons = document.querySelector('#play-buttons');
 
 let roundRecap = document.querySelector('#round-recap');
+let playerChoice = document.querySelector('#player-choice');
+let computerChoice = document.querySelector('#computer-choice');
+let roundResult = document.querySelector('#round-result');
 let continueButtons = document.querySelector('#continue-buttons');
 let playAgain = document.querySelector('#play-again');
 
 let currentScore = document.querySelectorAll('.current-score');
-let recapSelections = document.querySelector('.recap-selections');
+
 
 // Hide roundRecap until user plays first round
 roundRecap.style.display = 'none';
 playAgain.style.display = 'none';
 
 function switchTo(view) {
-    // toggles roundArea between showing makeChoice or roundRecap view
+    // changes what roundArea shows
     if (view === 'roundRecap') {
         makeChoice.style.display = 'none';
         roundRecap.style.display = '';
@@ -43,7 +46,7 @@ playButtons.addEventListener('click', (e) => {
     // Target validation to avoid playing round if user clicks between buttons
     if (target === 'rock' || target === 'paper' || target === 'scissors') {
         playRound(`${target}`);
-        console.log(winnerCheck(), roundResults);
+        console.log(winnerCheck(), roundData);
         
         switchTo('roundRecap');
     }
@@ -61,59 +64,29 @@ continueButtons.addEventListener('click', (e) => {
     // }
 })
 
-/* 
-
-User presses hand button:
-
-    Round area:
-    - Change to Results state
-        - Hide hand buttons
-        - call playRound()
-        - Show choices, round result, updated score and Next round button
-
+/*
     Log area:
     - If this was first round: hide empty state and show log columns
     - Add round to log
-
-User presses Play again:
-
-    - Reset everything
-
-All states:
-    - roundNumber
-
-Choice state:
-    - div: playButtons
-        - p: Make your choice 
-        - div: buttons
-    - p: currentScore
-
-Result state:
-    - div: roundChoices
-    - p: roundResult
-    - p: currentScore
-    - button: nextRound
-
-Game over state:
-    - div: roundChoices
-    - p: gameResult
-    - button: playAgain
 */    
 
 function updateRoundNumber() {
+    // Triggered on 'New round' click; doesn't belong to updateRoundRecap
     roundNumber.textContent = `Round ${roundsPlayed + 1}`;
 }
 
-function updateScore() {
+function updateRoundRecap() {
     currentScore.forEach(element => {
         element.textContent = `Score is ${wins}-${losses}`;
-});
+    });
+
+    // roundResult.textContent = 
+
 }
 
 function playRound(playerSelection) {
     computerSelection = getComputerChoice();
     
-    let roundData = {};
     roundData.roundNumber = roundsPlayed + 1;
     roundData.playerSelection = playerSelection;
     roundData.computerSelection = computerSelection;
@@ -139,8 +112,7 @@ function playRound(playerSelection) {
             wins ++;
         }
 
-    updateScore();
-    roundResults.push(roundData);
+    updateRoundRecap();
     roundsPlayed++;
 }
 
