@@ -9,8 +9,10 @@ let makeChoice = document.querySelector('#make-choice');
 let playButtons = document.querySelector('#play-buttons');
 
 let roundRecap = document.querySelector('#round-recap');
-let playerChoice = document.querySelector('#player-choice');
-let computerChoice = document.querySelector('#computer-choice');
+let playerChoiceText = document.querySelector('#player-choice-text');
+let playerChoiceImg = document.querySelector('#player-choice-img');
+let computerChoiceText = document.querySelector('#computer-choice-text');
+let computerChoiceImg = document.querySelector('#computer-choice-img');
 let roundResult = document.querySelector('#round-result');
 let continueButtons = document.querySelector('#continue-buttons');
 let playAgain = document.querySelector('#play-again');
@@ -40,11 +42,16 @@ function switchTo(view) {
     }
 }
 
+function toTitleCase(word) {
+    return word.charAt(0).toUpperCase() + word.slice(1);
+}
+
 playButtons.addEventListener('click', (e) => {
     let target = e.target.id;
 
     // Target validation to avoid playing round if user clicks between buttons
     if (target === 'rock' || target === 'paper' || target === 'scissors') {
+        target = toTitleCase(target);
         playRound(`${target}`);
         console.log(winnerCheck(), roundData);
         
@@ -70,20 +77,6 @@ continueButtons.addEventListener('click', (e) => {
     - Add round to log
 */    
 
-function updateRoundNumber() {
-    // Triggered on 'New round' click; doesn't belong to updateRoundRecap
-    roundNumber.textContent = `Round ${roundsPlayed + 1}`;
-}
-
-function updateRoundRecap() {
-    currentScore.forEach(element => {
-        element.textContent = `Score is ${wins}-${losses}`;
-    });
-
-    // roundResult.textContent = 
-
-}
-
 function playRound(playerSelection) {
     computerSelection = getComputerChoice();
     
@@ -93,22 +86,22 @@ function playRound(playerSelection) {
 
     if (playerSelection === computerSelection) {
         
-        roundData.result = 'tie';
+        roundData.result = 'Tie';
     
     } else if 
-        ((playerSelection === 'rock' && computerSelection === 'paper') || 
-        (playerSelection === 'paper' && computerSelection === 'scissors') || 
-        (playerSelection === 'scissors' && computerSelection === 'rock')) {
+        ((playerSelection === 'Rock' && computerSelection === 'Paper') || 
+        (playerSelection === 'Paper' && computerSelection === 'Scissors') || 
+        (playerSelection === 'Scissors' && computerSelection === 'Rock')) {
             
-            roundData.result = 'loss';
+            roundData.result = 'Loss';
             losses ++;
 
         } else if 
-        ((computerSelection === 'rock' && playerSelection === 'paper') || 
-        (computerSelection === 'paper' && playerSelection === 'scissors') || 
-        (computerSelection === 'scissors' && playerSelection === 'rock')) {
+        ((computerSelection === 'Rock' && playerSelection === 'Paper') || 
+        (computerSelection === 'Paper' && playerSelection === 'Scissors') || 
+        (computerSelection === 'Scissors' && playerSelection === 'Rock')) {
             
-            roundData.result = 'win';
+            roundData.result = 'Win';
             wins ++;
         }
 
@@ -120,22 +113,65 @@ function getComputerChoice() {
     let randomNumber = Math.floor((Math.random() * 3) + 1);
 
     if (randomNumber === 1) {
-        return 'rock';
+        return 'Rock';
 
     } else if (randomNumber === 2) {
-        return 'paper'; 
+        return 'Paper'; 
 
     } else if (randomNumber === 3) {
-        return 'scissors';
+        return 'Scissors';
     }
+}
+
+function updateRoundRecap() {
+    currentScore.forEach(element => {
+        element.textContent = `Score is ${wins}-${losses}`;
+    });
+
+    roundResult.textContent = roundData.result;
+    playerChoiceText.textContent = roundData.playerSelection;
+    computerChoiceText.textContent = roundData.computerSelection;
+
+    switch (roundData.playerSelection) {
+        case 'Rock':
+            playerChoiceImg.src='./images/rock-right.png';
+            break;
+
+        case 'Paper':
+            playerChoiceImg.src='./images/paper-right.png';
+            break;
+        
+        case 'Scissors':
+            playerChoiceImg.src='./images/scissors-right.png';
+            break;
+    }
+
+    switch (roundData.computerSelection) {
+        case 'Rock':
+            computerChoiceImg.src='./images/rock-left.png';
+            break;
+
+        case 'Paper':
+            computerChoiceImg.src='./images/paper-right.png';
+            break;
+        
+        case 'Scissors':
+            computerChoiceImg.src='./images/scissors-right.png';
+            break;
+    }
+}
+
+function updateRoundNumber() {
+    // Triggered on 'Next round' click; doesn't belong to updateRoundRecap
+    roundNumber.textContent = `Round ${roundsPlayed + 1}`;
 }
 
 function winnerCheck() {
     if (wins >= 5) {
-        return 'player wins the game';
+        return 'gameWin';
 
     } else if (losses >= 5) {
-        return 'computer wins the game';
+        return 'gameLoss';
 
     } else {
         return 'no winner yet';
