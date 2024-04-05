@@ -80,6 +80,7 @@ p {
 #content {
     width: 100%;
     height: 100%;
+    flex-direction: column;
 }
 
 #round-area {
@@ -89,6 +90,22 @@ p {
     border-radius: 16px;
     border: 4px solid #929292;
     text-align: center;
+}
+
+#log-area {
+    flex: 1;
+    flex-direction: column;
+}
+
+#log-area > #empty-state {
+    align-items: center;
+    justify-content: center;
+}
+
+#log-area > #log {
+    display: none;
+    align-items: center;
+    justify-content: center;
 }
 
 #round-number {
