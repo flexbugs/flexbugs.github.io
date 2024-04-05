@@ -1,46 +1,37 @@
-let roundsPlayed = 0;
+let roundNumber = 1;
 let wins = 0;
 let losses = 0;
 let roundData = {};
 
+let overlay = document.querySelector('#overlay');
+
+let makeChoiceView = document.querySelector('#make-choice');
+
 let roundArea = document.querySelector('#round-area');
-let roundNumber = document.querySelector('#round-number');
-let makeChoice = document.querySelector('#make-choice');
+let roundNumberIndicator = document.querySelector('#round-number');
 let playButtons = document.querySelector('#play-buttons');
 
 let roundRecap = document.querySelector('#round-recap');
+
 let playerChoiceText = document.querySelector('#player-choice-text');
 let playerChoiceImg = document.querySelector('#player-choice-img');
 let computerChoiceText = document.querySelector('#computer-choice-text');
 let computerChoiceImg = document.querySelector('#computer-choice-img');
+
 let roundResult = document.querySelector('#round-result');
+
 let continueButtons = document.querySelector('#continue-buttons');
 let playAgain = document.querySelector('#play-again');
 
-let currentScore = document.querySelectorAll('.current-score');
+let currentScoreIndicator = document.querySelectorAll('.current-score');
 
 
-// Hide roundRecap until user plays first round
-roundRecap.style.display = 'none';
-playAgain.style.display = 'none';
-
-function switchTo(view) {
-    // changes what roundArea shows
-    if (view === 'roundRecap') {
-        makeChoice.style.display = 'none';
-        roundRecap.style.display = '';
-    } else if (view === 'makeChoice') {
-        roundRecap.style.display = 'none';
-        makeChoice.style.display = '';
-    } else if (view === 'gameOver') {
-        /* 
-        - update roundResult to show game score instead of round result 
-        ('you win 5-3!' / 'you lose 3-5!') 
-        - show Play again button
-        */
-
-    }
+function showRoundRecap() {
+    overlay.style.display = 'flex';
+    roundRecap.style.display = 'flex';
+    // setTimeout(roundRecap.classList.remove('show-overlay'), 3000);
 }
+
 
 function toTitleCase(word) {
     return word.charAt(0).toUpperCase() + word.slice(1);
@@ -55,21 +46,9 @@ playButtons.addEventListener('click', (e) => {
         playRound(`${target}`);
         console.log(winnerCheck(), roundData);
         
-        switchTo('roundRecap');
+        showRoundRecap();
     }
 });
-
-continueButtons.addEventListener('click', (e) => {
-    let target = e.target.id;
-    
-    if (target === 'next-round') {
-        updateRoundNumber();
-        switchTo('makeChoice');
-    } 
-    // else if (target = play-again) {
-        
-    // }
-})
 
 /*
     Log area:
@@ -80,7 +59,7 @@ continueButtons.addEventListener('click', (e) => {
 function playRound(playerSelection) {
     computerSelection = getComputerChoice();
     
-    roundData.roundNumber = roundsPlayed + 1;
+    roundData.roundNumber = roundNumber;
     roundData.playerSelection = playerSelection;
     roundData.computerSelection = computerSelection;
 
@@ -105,8 +84,9 @@ function playRound(playerSelection) {
             wins ++;
         }
 
-    updateRoundRecap();
-    roundsPlayed++;
+    updateroundRecap();
+    roundNumber++;
+    showRoundRecap();
 }
 
 function getComputerChoice() {
@@ -123,8 +103,8 @@ function getComputerChoice() {
     }
 }
 
-function updateRoundRecap() {
-    currentScore.forEach(element => {
+function updateroundRecap() {
+    currentScoreIndicator.forEach(element => {
         element.textContent = `Score is ${wins}-${losses}`;
     });
 
@@ -161,9 +141,9 @@ function updateRoundRecap() {
     }
 }
 
-function updateRoundNumber() {
-    // Triggered on 'Next round' click; doesn't belong to updateRoundRecap
-    roundNumber.textContent = `Round ${roundsPlayed + 1}`;
+function updateRoundNumberIndicator() {
+    // Triggered on 'Next round' click; doesn't belong to updateroundRecap
+    roundNumberIndicator.textContent = `Round ${roundNumber}`;
 }
 
 function winnerCheck() {
