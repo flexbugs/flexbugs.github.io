@@ -33,25 +33,35 @@
     <div id=header class="flex">
         <img src="./images/rock-paper-scissors.png" alt=
         "Rock, Paper, Scissors icon" height="56px" width="56px">
-        Rock, Paper, Scissors
+        <p>Rock, Paper, Scissors</p>
     </div>
     <div id=content class="flex">
-        <div id="round-area">
-            <p id="round-number" class="color-light-grey">Round 1</p>
-            <div id="make-choice">
-                <p class="text-small">Make your choice!</p>
-                <div id="play-buttons">
-                    <button id="rock">Rock</button>
-                    <button id="paper">Paper</button>
-                    <button id="scissors">Scissors</button>
-                </div>
-                <p class="current-score">Score is 0-0</p>
+        <div id="round-area" class="flex">
+            <p id="round-number" class="color-light-grey text-m">Round 1</p>
+            <p class="text-s">Make your choice!</p>
+                <div id="play-buttons" class="flex">
+                    <button id="rock">
+                        <img src="./images/rock-right.png" 
+                        class="button-icon">
+                        Rock
+                    </button>
+                    <button id="paper">
+                        <img src="./images/paper-right.png" 
+                        class="button-icon">
+                        Paper
+                    </button>
+                    <button id="scissors">
+                        <img src="./images/scissors-right.png" 
+                        class="button-icon">
+                        Scissors
+                    </button>
             </div>
+            <p class="current-score text-m">Score is 0-0</p>
         </div>
         <div id="log-area" class="flex">
             <div id="empty-state" class="flex">
                 <div id="empty-state-hands">
-
+                    
                 </div>
                 <div id="empty-state-text" class="color-light-grey">
                     Defeat Handy the Computer in a first-to-5 to win!
@@ -63,13 +73,13 @@
         </div>
     </div>
     <div id="footer" class="flex">
-        <div id="signature" class="flex">
+        <div id="signature" class="flex text-m">
             <img src="./images/github-mark-white.svg" alt="Github logo"
             height="20px" width="20px">
             <a href="https://github.com/simonfriishansen" target="_blank"
             title="simonfriis on Github">simonfriishansen</a>
         </div>
-        <div id="flaticon-credit" class="flex">
+        <div id="flaticon-credit" class="flex text-s">
             Icons by
             <a href=
             "https://www.flaticon.com/free-icons/rock-paper-scissors" 
