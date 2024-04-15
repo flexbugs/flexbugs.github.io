@@ -5,8 +5,6 @@ let roundData = {};
 
 let overlay = document.querySelector('#overlay');
 
-let makeChoiceView = document.querySelector('#make-choice');
-
 let roundArea = document.querySelector('#round-area');
 let roundNumberIndicator = document.querySelector('#round-number');
 let playButtons = document.querySelector('#play-buttons');
