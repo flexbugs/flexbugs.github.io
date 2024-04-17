@@ -42,6 +42,7 @@ div {
 
 p {
     margin: 0px 0px;
+    line-height: 150%;
 }
 
 .text-s {
@@ -107,7 +108,7 @@ p {
 }
 
 #play-buttons {
-    flex: 1 ;
+    flex: 1;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
