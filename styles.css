@@ -16,7 +16,8 @@ body {
     justify-content: space-between;
     background-color: #2C2C2C;
     color: #ffffff;
-    font-family: 'Kavoon', sans-serif;
+    font-family: 'Inria Sans';
+    line-height: 150%;
 }
 
 a {
@@ -29,20 +30,17 @@ button {
     height: 48px;
     width: 180px;
     padding: 0px 16px;
-    border: 2px solid rgba(0, 0, 0, 0.5);
+    border: 2px solid rgba(0, 0, 0, 0.6);
     border-radius: 16px;
     gap: 8px;
     font-size: 20px;
+    font-family: 'Kavoon';
+    color: rgba(0, 0, 0, 0.6);
     cursor: pointer;
-}
-
-div {
-    line-height: 150%;
 }
 
 p {
     margin: 0px 0px;
-    line-height: 150%;
 }
 
 .text-s {
@@ -59,6 +57,10 @@ p {
 
 .text-xl {
     font-size: 32px;
+}
+
+.font-kavoon {
+    font-family: 'Kavoon';
 }
 
 .button-icon {
@@ -149,7 +151,15 @@ p {
 
 #round-choices {
     flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 80px;
+}
 
+.choice {
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
 }
 
 #header {

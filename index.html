@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href=
+    "https://fonts.googleapis.com/css2?family=Inria+Sans:wght@400;700&family=Kavoon&display=swap"
+    rel="stylesheet">
     <script src="main.js" defer></script>
 </head>
 <body class="flex">
@@ -12,18 +17,18 @@
         <div id="round-recap" class="overlay hidden">
             <p class="round-number color-light-grey text-m">Round 1</p>
             <div id="round-choices" class="overlay hidden">
-                <div id="player" class="overlay hidden">
-                    <p>You</p>
+                <div id="player" class="choice overlay hidden">
+                    <p class="text-m">You</p>
                     <img id="player-choice-img" src="./images/rock-right.png" 
                     alt="Rock pointing right" width="40px">
-                    <p id="player-choice-text">Rock</p>
+                    <p id="player-choice-text" class="text-m">Rock</p>
                 </div>
                 vs
-                <div id="computer" class="overlay hidden">
-                    <p>Handy</p>
+                <div id="computer" class="choice overlay hidden ">
+                    <p class="text-m">Handy</p>
                     <img id="computer-choice-img" src="./images/rock-left.png" 
                     alt="Rock pointing left" width="40px">
-                    <p id="computer-choice-text">Rock</p>
+                    <p id="computer-choice-text" class="text-m">Rock</p>
                 </div>
             </div>
             <div id="round-result" class="overlay hidden">
