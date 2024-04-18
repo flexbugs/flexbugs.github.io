@@ -3,10 +3,10 @@ let wins = 0;
 let losses = 0;
 let roundData = {};
 
-let overlay = document.querySelector('#overlay');
+let overlays = document.querySelectorAll('.overlay');
 
 let roundArea = document.querySelector('#round-area');
-let roundNumberIndicator = document.querySelector('#round-number');
+let roundNumberIndicator = document.querySelectorAll('.round-number');
 let playButtons = document.querySelector('#play-buttons');
 
 let roundRecap = document.querySelector('#round-recap');
@@ -25,11 +25,20 @@ let currentScoreIndicator = document.querySelectorAll('.current-score');
 
 
 function showRoundRecap() {
-    overlay.style.display = 'flex';
-    roundRecap.style.display = 'flex';
-    // setTimeout(roundRecap.classList.remove('show-overlay'), 3000);
+    overlays.forEach(element => {
+        element.classList.remove('hidden');
+        element.classList.add('shown');
+    });
+
+    setTimeout(hideRoundRecap, 2000);
 }
 
+function hideRoundRecap() {
+    overlays.forEach(element => {
+        element.classList.remove('shown');
+        element.classList.add('hidden');
+    })
+}
 
 function toTitleCase(word) {
     return word.charAt(0).toUpperCase() + word.slice(1);

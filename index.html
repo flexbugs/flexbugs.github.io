@@ -8,26 +8,28 @@
     <script src="main.js" defer></script>
 </head>
 <body class="flex">
-    <div id="overlay">
-        <div id="round-recap">
-            <div id="round-choices"></div>
-                <div id="player">
+    <div id="overlay-base" class="overlay hidden">
+        <div id="round-recap" class="overlay hidden">
+            <p class="round-number color-light-grey text-m">Round 1</p>
+            <div id="round-choices" class="overlay hidden">
+                <div id="player" class="overlay hidden">
                     <p>You</p>
                     <img id="player-choice-img" src="./images/rock-right.png" 
                     alt="Rock pointing right" width="40px">
                     <p id="player-choice-text">Rock</p>
                 </div>
                 vs
-                <div id="computer">
+                <div id="computer" class="overlay hidden">
                     <p>Handy</p>
                     <img id="computer-choice-img" src="./images/rock-left.png" 
                     alt="Rock pointing left" width="40px">
                     <p id="computer-choice-text">Rock</p>
                 </div>
-            <div id="round-result">
+            </div>
+            <div id="round-result" class="overlay hidden">
                 Tie!
             </div>
-            <p class="current-score">Score is 0-0</p>
+            <p class="current-score overlay">Score is 0-0</p>
         </div>
     </div>
     <div id=header class="flex">
@@ -37,7 +39,7 @@
     </div>
     <div id=content class="flex">
         <div id="round-area" class="flex">
-            <p id="round-number" class="color-light-grey text-m">Round 1</p>
+            <p class="round-number color-light-grey text-m">Round 1</p>
             <p class="text-s">Make your choice!</p>
                 <div id="play-buttons" class="flex">
                     <button id="rock">
