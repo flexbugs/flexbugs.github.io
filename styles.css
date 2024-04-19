@@ -8,6 +8,7 @@ html, body, #content {
 
 html {
     justify-content: center;
+    font-size: 62.5%; /* for 10px baseline rem */
 }
 
 body {
@@ -17,7 +18,6 @@ body {
     background-color: #2C2C2C;
     color: #ffffff;
     font-family: 'Inria Sans';
-    line-height: 150%;
 }
 
 a {
@@ -29,34 +29,38 @@ button {
     align-items: center;
     height: 48px;
     width: 180px;
-    padding: 0px 16px;
+    padding: 0rem 1.6rem;
     border: 2px solid rgba(0, 0, 0, 0.6);
     border-radius: 16px;
     gap: 8px;
-    font-size: 20px;
+    font-size: 1.5rem;
     font-family: 'Kavoon';
     color: rgba(0, 0, 0, 0.6);
     cursor: pointer;
 }
 
 p {
-    margin: 0px 0px;
+    margin: 0.2rem 0rem ;
+}
+
+.text-xs {
+    font-size: 0.8rem;
 }
 
 .text-s {
-    font-size: 12px;
+    font-size: 1.2rem; 
 }
 
 .text-m {
-    font-size: 16px;
+    font-size: 1.6rem;
 }
 
 .text-l {
-    font-size: 20px;
+    font-size: 2.0rem;
 }
 
 .text-xl {
-    font-size: 32px;
+    font-size: 3.2rem;
 }
 
 .font-kavoon {
@@ -125,7 +129,7 @@ p {
     right: 0;
     bottom: 0;
     left: 0;
-    padding: 24px, 16px;
+    padding: 2.4rem, 1.6rem;
     background-color:rgba(0,0,0,0.9);
     z-index: 1;
 }
@@ -166,7 +170,7 @@ p {
     height: 120px;
     align-items: center;
     gap: 16px;
-    font-size: 24px;
+    font-size: 2.4rem;
 }
 
 #content {
@@ -179,7 +183,7 @@ p {
     width: 100%;
     flex-direction: column;
     gap: 12px;
-    padding: 16px 24px;
+    padding: 1.6rem 2.4rem;
     border-radius: 16px;
     border: 4px solid #929292;
     text-align: center;
@@ -187,7 +191,7 @@ p {
 
 #log-area {
     flex-direction: column;
-    padding: 24px;
+    padding: 2.4rem;
 }
 
 #log-area > #empty-state {
@@ -207,7 +211,7 @@ p {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: 0px 0px 16px 0px;
+    margin: 0rem 0rem 1.6rem 0rem;
     gap: 8px;
 }
 
