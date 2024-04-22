@@ -139,11 +139,11 @@ function updateroundRecap() {
             break;
 
         case 'Paper':
-            computerChoiceImg.src='./images/paper-right.png';
+            computerChoiceImg.src='./images/paper-left.png';
             break;
         
         case 'Scissors':
-            computerChoiceImg.src='./images/scissors-right.png';
+            computerChoiceImg.src='./images/scissors-left.png';
             break;
     }
 }

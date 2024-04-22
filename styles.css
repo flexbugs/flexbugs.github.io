@@ -33,8 +33,8 @@ button {
     border: 2px solid rgba(0, 0, 0, 0.6);
     border-radius: 16px;
     gap: 8px;
-    font-size: 1.5rem;
-    font-family: 'Kavoon';
+    font-size: 2.0rem;
+    font-family: Kavoon, Verdana, Geneva, Tahoma, sans-serif;
     color: rgba(0, 0, 0, 0.6);
     cursor: pointer;
 }
@@ -160,10 +160,14 @@ p {
     gap: 80px;
 }
 
-.choice {
+.choice-div {
     flex-direction: column;
     gap: 12px;
     align-items: center;
+}
+
+.choice-name {
+    font-family: Kavoon, Verdana, Geneva, Tahoma, sans-serif;
 }
 
 #header {
@@ -171,6 +175,7 @@ p {
     align-items: center;
     gap: 16px;
     font-size: 2.4rem;
+    font-family: Kavoon, Verdana, Geneva, Tahoma, sans-serif;
 }
 
 #content {
