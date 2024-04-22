@@ -84,6 +84,10 @@ p {
     color: #929292;
 }
 
+.color-white {
+    color: #FFF;
+}
+
 .color-paper-green {
     color: #87D147;
 }
@@ -160,6 +164,7 @@ p {
 
 .choice-div {
     flex-direction: column;
+    width: 80px;
     gap: 1.2rem;
     align-items: center;
 }
