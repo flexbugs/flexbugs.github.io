@@ -1,5 +1,5 @@
 * {
-    box-sizing: border-box;
+    box-sizing: border-box; /* Figma-friendly sizing */
 }
 
 html, body, #content {
@@ -8,7 +8,7 @@ html, body, #content {
 
 html {
     justify-content: center;
-    font-size: 62.5%; /* for 10px baseline rem */
+    font-size: 62.5%; /* 10px baseline rem */
 }
 
 body {
@@ -200,7 +200,6 @@ p {
 }
 
 #log-area > #empty-state {
-    
     align-items: center;
     justify-content: center;
     text-align: center;
