@@ -231,16 +231,11 @@ p {
     justify-content: space-between;
 }
 
-#signature {
+#signature, #flaticon-credit {
     align-items: center;
     gap: .4rem;
 }
 
 #signature > a {
     font-weight: bold;
-}
-
-#flaticon-credit {
-    align-items: center;
-    gap: .4rem;
 }
