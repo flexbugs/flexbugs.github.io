@@ -216,8 +216,8 @@ p {
 
 #footer {
     align-items: center;
-    justify-content: center;
-    margin: 0rem 0rem 1.6rem 0rem;
+    justify-content: space-between;
+    margin: 1.2rem 1.6rem;
     gap: .8rem;
 }
 
