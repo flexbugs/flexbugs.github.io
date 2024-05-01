@@ -21,8 +21,8 @@ let roundResult = document.querySelector('#round-result');
 let continueButtons = document.querySelector('#continue-buttons');
 let playAgain = document.querySelector('#play-again');
 
-let currentScoreIndicator = document.querySelectorAll('.current-score');
-
+let playerScore = document.querySelector('#player-score');
+let computerScore = document.querySelector('#computer-score');
 
 function showRoundRecap() {
     overlays.forEach(element => {
@@ -111,9 +111,8 @@ function getComputerChoice() {
 }
 
 function updateroundRecap() {
-    currentScoreIndicator.forEach(element => {
-        element.textContent = `Score is ${wins}-${losses}`;
-    });
+    playerScore.textContent = `${wins}`;
+    computerScore.textContent = `${losses}`;
 
     roundResult.textContent = roundData.result;
     playerChoiceText.textContent = roundData.playerSelection;

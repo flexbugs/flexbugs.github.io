@@ -220,6 +220,23 @@ p {
     font-family: Kavoon, Verdana, Geneva, Tahoma, sans-serif;
 }
 
+#scoreboard-area {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.6rem 0rem;
+}
+
+.scoreboard {
+    width: 80px;
+    height: 56px;
+    justify-content: center;
+    align-items: center;
+    background: #1E1E1E;
+    font-weight: bold;
+    border-radius: 1.6rem;
+}
+
 #log-area {
     flex-direction: column;
     padding: 2.4rem;
