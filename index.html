@@ -13,32 +13,6 @@
     <script src="main.js" defer></script>
 </head>
 <body class="flex">
-    <div id="overlay-base" class="overlay hidden">
-        <div id="round-recap" class="overlay hidden">
-            <p class="round-number color-light-grey text-m">Round 1</p>
-            <div id="round-choices" class="overlay hidden text-m">
-                <div id="player" class="choice-div overlay hidden">
-                    <p class="text-m color-light-grey">You</p>
-                    <img id="player-choice-img" src="./images/rock-right.png" 
-                    alt="Rock pointing right" width="40px">
-                    <p id="player-choice-text"
-                    class="choice-name text-m">Rock</p>
-                </div>
-                vs
-                <div id="computer" class="choice-div overlay hidden">
-                    <p class="text-m color-light-grey">Handy</p>
-                    <img id="computer-choice-img" src="./images/rock-left.png" 
-                    alt="Rock pointing left" width="40px">
-                    <p id="computer-choice-text"
-                    class="choice-name text-m">Rock</p>
-                </div>
-            </div>
-            <div id="round-result" class="overlay hidden text-xl color-white">
-                Tie!
-            </div>
-            <p class="current-score overlay text-m">Score is 0-0</p>
-        </div>
-    </div>
     <div id=header class="flex">
         <img src="./images/rock-paper-scissors.png" alt=
         "Rock, Paper, Scissors icon" height="56px" width="56px">
@@ -46,6 +20,32 @@
     </div>
     <div id=content class="flex">
         <div id="round-area" class="flex">
+            <div id="overlay-base" class="overlay hidden">
+                <div id="round-recap" class="overlay hidden">
+                    <p class="round-number color-light-grey text-m">Round 1</p>
+                    <div id="round-choices" class="overlay hidden text-m">
+                        <div id="player" class="choice-div overlay hidden">
+                            <p class="text-m color-light-grey">You</p>
+                            <img id="player-choice-img" src="./images/rock-right.png" 
+                            alt="Rock pointing right" width="40px">
+                            <p id="player-choice-text"
+                            class="choice-name text-m">Rock</p>
+                        </div>
+                        vs
+                        <div id="computer" class="choice-div overlay hidden">
+                            <p class="text-m color-light-grey">Handy</p>
+                            <img id="computer-choice-img" src="./images/rock-left.png" 
+                            alt="Rock pointing left" width="40px">
+                            <p id="computer-choice-text"
+                            class="choice-name text-m">Rock</p>
+                        </div>
+                    </div>
+                    <div id="round-result" class="overlay hidden text-xl color-white">
+                        Tie!
+                    </div>
+                    <p class="current-score overlay text-m">Score is 0-0</p>
+                </div>
+            </div>
             <p class="round-number color-light-grey text-m">Round 1</p>
             <p class="text-s">Make your choice!</p>
                 <div id="play-buttons" class="flex">
