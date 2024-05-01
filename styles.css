@@ -119,10 +119,12 @@ p {
 }
 
 #play-buttons {
-    flex: 1;
+    flex: 1 0 auto;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 1.6rem;
+    background: #595959;
 }
 
 #overlay-base {
@@ -196,12 +198,17 @@ p {
     height: 320px;
     width: 100%;
     flex-direction: column;
-    gap: 1.2rem;
-    padding: 1.6rem 2.4rem;
     border-radius: 1.6rem;
-    border: .4rem solid #929292;
+    background: #1E1E1E;
+    border: .4rem solid #1E1E1E;
     text-align: center;
     z-index: 0;
+}
+
+.round-number {
+    height: 40px;
+    align-items: center;
+    justify-content: center;
 }
 
 #log-area {
