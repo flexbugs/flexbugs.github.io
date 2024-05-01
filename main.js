@@ -121,28 +121,34 @@ function updateroundRecap() {
     switch (roundData.playerSelection) {
         case 'Rock':
             playerChoiceImg.src='./images/rock-right.png';
+            playerChoiceText.style.color='#70D6F9';
             break;
 
         case 'Paper':
             playerChoiceImg.src='./images/paper-right.png';
+            playerChoiceText.style.color='#87D147';
             break;
         
         case 'Scissors':
             playerChoiceImg.src='./images/scissors-right.png';
+            playerChoiceText.style.color='#FC657E';
             break;
     }
 
     switch (roundData.computerSelection) {
         case 'Rock':
             computerChoiceImg.src='./images/rock-left.png';
+            computerChoiceText.style.color='#70D6F9';
             break;
 
         case 'Paper':
             computerChoiceImg.src='./images/paper-left.png';
+            computerChoiceText.style.color='#87D147';
             break;
         
         case 'Scissors':
             computerChoiceImg.src='./images/scissors-left.png';
+            computerChoiceText.style.color='#FC657E';
             break;
     }
 }
