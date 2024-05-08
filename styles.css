@@ -178,6 +178,13 @@ p {
     justify-content: center;
 }
 
+#round-result {
+    flex: auto;
+    height: 56px;
+    align-items: center;
+    font-weight: bold;
+}
+
 #round-choices {
     flex-direction: row;
     width: 100%;
