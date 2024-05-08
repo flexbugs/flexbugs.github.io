@@ -106,7 +106,7 @@ p {
     color: #FC657E;
 }
 
-.color-yellow {
+.color-gold {
     color: #F5C84C;
 }
 
@@ -195,7 +195,7 @@ p {
     background: #2C2C2C;
 }
 
-#play-buttons {
+#play-buttons-container {
     flex-direction: column;
     flex: 1 0 auto;
     align-items: center;
@@ -239,6 +239,14 @@ p {
     background: #1E1E1E;
     font-weight: bold;
     border-radius: 1.6rem;
+}
+
+#game-over-area {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    gap: .8rem;
 }
 
 #log-area {

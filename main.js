@@ -7,7 +7,7 @@ let overlays = document.querySelectorAll('.overlay');
 
 let roundArea = document.querySelector('#round-area');
 let roundNumberIndicator = document.querySelectorAll('.round-number');
-let playButtons = document.querySelector('#play-buttons');
+let playButtons = document.querySelector('#play-buttons-container');
 
 let roundRecap = document.querySelector('#round-recap');
 
@@ -17,6 +17,8 @@ let computerChoiceText = document.querySelector('#computer-choice-text');
 let computerChoiceImg = document.querySelector('#computer-choice-img');
 
 let roundResult = document.querySelector('#round-result');
+
+let gameOverArea = document.querySelector('#game-over-area');
 
 let continueButtons = document.querySelector('#continue-buttons');
 let playAgain = document.querySelector('#play-again');
@@ -51,7 +53,6 @@ playButtons.addEventListener('click', (e) => {
     if (target === 'rock' || target === 'paper' || target === 'scissors') {
         target = toTitleCase(target);
         playRound(`${target}`);
-        console.log(winnerCheck(), roundData);
     }
 });
 
@@ -88,10 +89,8 @@ function playRound(playerSelection) {
             roundData.result = 'Win';
             wins ++;
         }
-
-    updateroundRecap();
-    roundNumber++;
-    showRoundRecap();
+    
+    gameWinnerCheck();
 }
 
 function getComputerChoice() {
@@ -156,14 +155,30 @@ function updateRoundNumberIndicator() {
     roundNumberIndicator.textContent = `Round ${roundNumber}`;
 }
 
-function winnerCheck() {
+function gameWinnerCheck() {
     if (wins >= 5) {
-        return 'gameWin';
+        endGame('win');
 
     } else if (losses >= 5) {
-        return 'gameLoss';
+        endGame('loss');
 
     } else {
-        return 'no winner yet';
+        continueGame();
     }
-} 
+}
+
+function endGame(result) {
+    if (result = 'win') {
+        playerScore.style.background = '#F5C84C';
+    } else if (result = 'loss') {
+        computerScore.style.background = '#F5C84C';
+    }
+    gameOverArea.classList.remove('hidden');
+    gameOverArea.classList.add('shown');
+}
+
+function continueGame() {
+    updateroundRecap();
+    roundNumber++;
+    showRoundRecap();
+}

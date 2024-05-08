@@ -51,7 +51,7 @@
                         </div>
                     </div>
                 </div>
-                <div id="play-buttons" class="flex">
+                <div id="play-buttons-container" class="flex">
                         <button id="rock">
                             <img src="./images/rock-right.png" 
                             class="button-icon">
@@ -75,9 +75,17 @@
                 0
             </div>
             <p>Score</p>
-            <div id="computer-score" class="scoreboard flex text-l">
+            <div id="computer-score" class="scoreboard flex text-l ">
                 0
             </div>
+        </div>
+        <div id="game-over-area" class="hidden flex text-xl color-gold">
+            <div id="game-result">
+                winner text goes here
+            </div>
+            <button id="play-again" class="button">
+                Play again
+            </button>
         </div>
         <div id="log-area" class="flex">
             <div id="empty-state" class="flex">
