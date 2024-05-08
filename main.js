@@ -6,7 +6,7 @@ let roundData = {};
 let overlays = document.querySelectorAll('#container .hidden');
 
 let roundArea = document.querySelector('#round-area');
-let roundNumberIndicator = document.querySelectorAll('.round-number');
+let roundNumberIndicator = document.querySelector('#round-number');
 let playButtons = document.querySelector('#play-buttons-container');
 
 let roundRecap = document.querySelector('#round-recap');
@@ -29,6 +29,8 @@ let computerScore = document.querySelector('#computer-score');
 let scores = document.querySelectorAll('.score');
 
 let roundRecapTimeout;
+let updateRoundNumber;
+
 
 function showRoundRecap() {
     overlays.forEach(element => {
@@ -36,7 +38,9 @@ function showRoundRecap() {
         element.classList.add('shown');
     });
 
-    roundRecapTimeout = setTimeout(hideRoundRecap, 500); // hide after a delay
+    // Hide elements after a delay
+    roundRecapTimeout = setTimeout(hideRoundRecap, 500); 
+    updateRoundNumber = setTimeout(updateRoundNumberIndicator, 500);
 }
 
 function hideRoundRecap() {
