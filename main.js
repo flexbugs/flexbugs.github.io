@@ -173,6 +173,7 @@ function gameWinnerCheck() {
 function endGame(result) {
     if (result = 'win') {
         playerScore.style.background = '#F5C84C';
+        playerScore.style.color = '#1E1E1E';
         gameResultText.textContent = 'You win the game!'
         
     } else if (result = 'loss') {
