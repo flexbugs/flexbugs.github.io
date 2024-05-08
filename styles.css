@@ -246,7 +246,15 @@ p {
     align-items: center;
     justify-content: center;
     font-weight: bold;
-    gap: .8rem;
+    gap: 1.6rem;
+    background: #1E1E1E;
+    padding: 1.6rem;
+    border-radius: 1.6rem;
+}
+
+#play-again {
+    align-items: center;
+    justify-content: center;
 }
 
 #log-area {

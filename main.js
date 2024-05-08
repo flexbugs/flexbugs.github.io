@@ -19,6 +19,7 @@ let computerChoiceImg = document.querySelector('#computer-choice-img');
 let roundResult = document.querySelector('#round-result');
 
 let gameOverArea = document.querySelector('#game-over-area');
+let gameResultText = document.querySelector('#game-result-text');
 
 let continueButtons = document.querySelector('#continue-buttons');
 let playAgain = document.querySelector('#play-again');
@@ -32,7 +33,7 @@ function showRoundRecap() {
         element.classList.add('shown');
     });
 
-    setTimeout(hideRoundRecap, 2000);
+    setTimeout(hideRoundRecap, 500);
 }
 
 function hideRoundRecap() {
@@ -90,6 +91,8 @@ function playRound(playerSelection) {
             wins ++;
         }
     
+    updateroundRecap()
+    showRoundRecap();
     gameWinnerCheck();
 }
 
@@ -170,15 +173,16 @@ function gameWinnerCheck() {
 function endGame(result) {
     if (result = 'win') {
         playerScore.style.background = '#F5C84C';
+        gameResultText.textContent = 'You win the game!'
+        
     } else if (result = 'loss') {
         computerScore.style.background = '#F5C84C';
+        gameResultText.textContent = 'You lose the game!'
     }
     gameOverArea.classList.remove('hidden');
     gameOverArea.classList.add('shown');
 }
 
 function continueGame() {
-    updateroundRecap();
     roundNumber++;
-    showRoundRecap();
 }
