@@ -27,13 +27,15 @@ let playAgain = document.querySelector('#play-again');
 let playerScore = document.querySelector('#player-score');
 let computerScore = document.querySelector('#computer-score');
 
+let roundRecapTimeout;
+
 function showRoundRecap() {
     overlays.forEach(element => {
         element.classList.remove('hidden');
         element.classList.add('shown');
     });
 
-    setTimeout(hideRoundRecap, 500);
+    roundRecapTimeout = setTimeout(hideRoundRecap, 500);
 }
 
 function hideRoundRecap() {
@@ -171,17 +173,19 @@ function gameWinnerCheck() {
 }
 
 function endGame(result) {
-    if (result = 'win') {
+    if (result === 'win') {
         playerScore.style.background = '#F5C84C';
         playerScore.style.color = '#1E1E1E';
         gameResultText.textContent = 'You win the game!'
         
-    } else if (result = 'loss') {
+    } else if (result === 'loss') {
         computerScore.style.background = '#F5C84C';
+        computerScore.style.color = '#1E1E1E';
         gameResultText.textContent = 'You lose the game!'
     }
     gameOverArea.classList.remove('hidden');
     gameOverArea.classList.add('shown');
+    clearTimeout(roundRecapTimeout);
 }
 
 function continueGame() {
