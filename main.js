@@ -52,8 +52,6 @@ playButtons.addEventListener('click', (e) => {
         target = toTitleCase(target);
         playRound(`${target}`);
         console.log(winnerCheck(), roundData);
-        
-        showRoundRecap();
     }
 });
 
