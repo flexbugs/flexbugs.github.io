@@ -244,7 +244,7 @@ p {
     padding: 1.6rem 0rem;
 }
 
-.scoreboard {
+.score {
     width: 80px;
     height: 56px;
     justify-content: center;
@@ -252,6 +252,11 @@ p {
     background: #1E1E1E;
     font-weight: bold;
     border-radius: .8rem;
+}
+
+.score-winner {
+    background: #F5C84C;
+    color: #1E1E1E;
 }
 
 #game-over-area {

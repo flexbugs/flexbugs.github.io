@@ -3,7 +3,7 @@ let wins = 0;
 let losses = 0;
 let roundData = {};
 
-let overlays = document.querySelectorAll('.overlay');
+let overlays = document.querySelectorAll('#container .hidden');
 
 let roundArea = document.querySelector('#round-area');
 let roundNumberIndicator = document.querySelectorAll('.round-number');
@@ -26,6 +26,7 @@ let playAgain = document.querySelector('#play-again');
 
 let playerScore = document.querySelector('#player-score');
 let computerScore = document.querySelector('#computer-score');
+let scores = document.querySelectorAll('.score');
 
 let roundRecapTimeout;
 
@@ -35,7 +36,7 @@ function showRoundRecap() {
         element.classList.add('shown');
     });
 
-    roundRecapTimeout = setTimeout(hideRoundRecap, 500);
+    roundRecapTimeout = setTimeout(hideRoundRecap, 500); // hide after a delay
 }
 
 function hideRoundRecap() {
@@ -45,9 +46,23 @@ function hideRoundRecap() {
     })
 }
 
+function showGameOverArea() {
+    gameOverArea.classList.add('shown');
+    gameOverArea.classList.remove('hidden');
+}
+
+function hideGameOverArea() {
+    gameOverArea.classList.remove('shown');
+    gameOverArea.classList.add('hidden');
+}
+
 function toTitleCase(word) {
     return word.charAt(0).toUpperCase() + word.slice(1);
 }
+
+playAgain.addEventListener('click', (e) => {
+    resetGame();
+})
 
 playButtons.addEventListener('click', (e) => {
     let target = e.target.id;
@@ -82,7 +97,7 @@ function playRound(playerSelection) {
         (playerSelection === 'Scissors' && computerSelection === 'Rock')) {
             
             roundData.result = 'Loss';
-            losses ++;
+            addLoss();
 
         } else if 
         ((computerSelection === 'Rock' && playerSelection === 'Paper') || 
@@ -90,12 +105,27 @@ function playRound(playerSelection) {
         (computerSelection === 'Scissors' && playerSelection === 'Rock')) {
             
             roundData.result = 'Win';
-            wins ++;
+            addWin();
         }
     
     updateroundRecap()
     showRoundRecap();
     gameWinnerCheck();
+}
+
+function addWin() {
+    wins++;
+    updateScore();
+}
+
+function addLoss() {
+    losses++;
+    updateScore();
+}
+
+function updateScore() {
+    playerScore.textContent = `${wins}`;
+    computerScore.textContent = `${losses}`;
 }
 
 function getComputerChoice() {
@@ -113,9 +143,6 @@ function getComputerChoice() {
 }
 
 function updateroundRecap() {
-    playerScore.textContent = `${wins}`;
-    computerScore.textContent = `${losses}`;
-
     roundResult.textContent = roundData.result;
     playerChoiceText.textContent = roundData.playerSelection;
     computerChoiceText.textContent = roundData.computerSelection;
@@ -172,22 +199,30 @@ function gameWinnerCheck() {
     }
 }
 
+function continueGame() {
+    roundNumber++;
+}
+
 function endGame(result) {
     if (result === 'win') {
-        playerScore.style.background = '#F5C84C';
-        playerScore.style.color = '#1E1E1E';
-        gameResultText.textContent = 'You win the game!'
+        playerScore.classList.add('score-winner');
+        gameResultText.textContent = 'You win the game!';
         
     } else if (result === 'loss') {
-        computerScore.style.background = '#F5C84C';
-        computerScore.style.color = '#1E1E1E';
+        computerScore.classList.add('score-winner');
         gameResultText.textContent = 'You lose the game!'
     }
-    gameOverArea.classList.remove('hidden');
-    gameOverArea.classList.add('shown');
+    showGameOverArea();
     clearTimeout(roundRecapTimeout);
 }
 
-function continueGame() {
-    roundNumber++;
+function resetGame() {
+    roundNumber = 1;
+    wins = 0;
+    losses = 0;
+    roundData = {};
+    scores.forEach((score) => {score.classList.remove('score-winner')});
+    updateScore();
+    hideRoundRecap();
+    hideGameOverArea();
 }
