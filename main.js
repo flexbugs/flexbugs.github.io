@@ -187,7 +187,6 @@ function updateroundRecap() {
 }
 
 function updateRoundNumberIndicator() {
-    // Triggered on 'Next round' click; doesn't belong to updateroundRecap
     roundNumberIndicator.textContent = `Round ${roundNumber}`;
 }
 
