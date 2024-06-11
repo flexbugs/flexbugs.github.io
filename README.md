@@ -1,2 +1,3 @@
 # rock-paper-scissors
-Rock Paper Scissors
+Play the schoolyard classic in a digital first-to-5-wins against Handy!
+HTML, CSS, JS
