@@ -296,8 +296,7 @@ p {
 }
 
 #footer-content {
-    flex: 1 0 auto;
-    max-width: 320px;
+    flex: 0 0 300px;
     justify-content: space-between;
 }
 
