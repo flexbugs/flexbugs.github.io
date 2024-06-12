@@ -221,6 +221,7 @@ function endGame(result) {
 
 function resetGame() {
     roundNumber = 1;
+    updateRoundNumberIndicator();
     wins = 0;
     losses = 0;
     roundData = {};
