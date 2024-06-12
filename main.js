@@ -39,8 +39,8 @@ function showRoundRecap() {
     });
 
     // Hide elements after a delay
-    roundRecapTimeout = setTimeout(hideRoundRecap, 500); 
-    updateRoundNumber = setTimeout(updateRoundNumberIndicator, 500);
+    roundRecapTimeout = setTimeout(hideRoundRecap, 1500); 
+    updateRoundNumber = setTimeout(updateRoundNumberIndicator, 1500);
 }
 
 function hideRoundRecap() {
